@@ -32,7 +32,7 @@ import hypothesis
 import hypothesis.strategies as hst
 import pytest
 try:
-    pass
+    from qutebrowser.qt import QtWebEngineWidgets
 except ImportError:
     pass
 
