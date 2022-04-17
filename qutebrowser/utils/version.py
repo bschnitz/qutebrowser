@@ -42,7 +42,7 @@ if QtWebKit:
     qWebKitVersion = QtWebKit.qWebKitVersion
 else:
     qWebKitVersion = None
-if QtWebEngine:
+if QtWebEngine and hasattr(QtWebEngine, 'PYQT_WEBENGINE_VERSION_STR'):
     PYQT_WEBENGINE_VERSION_STR = QtWebEngine.PYQT_WEBENGINE_VERSION_STR
 else:
     # Added in PyQt 5.13
