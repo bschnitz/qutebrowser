@@ -38,7 +38,9 @@ from typing import (Mapping, Optional, Sequence, Tuple, ClassVar, Dict, cast,
                     TYPE_CHECKING)
 from qutebrowser.qt import QtWidgets, QtWebKit, QtWebEngine, QtNetwork
 
-if not QtWebKit:
+if QtWebKit:
+    qWebKitVersion = QtWebKit.qWebKitVersion
+else:
     qWebKitVersion = None
 if QtWebEngine:
     PYQT_WEBENGINE_VERSION_STR = QtWebEngine.PYQT_WEBENGINE_VERSION_STR
@@ -765,7 +767,7 @@ def qtwebengine_versions(*, avoid_init: bool = False) -> WebEngineVersions:
 def _backend() -> str:
     """Get the backend line with relevant information."""
     if objects.backend == usertypes.Backend.QtWebKit:
-        return 'new QtWebKit (WebKit {})'.format(QtWebKit.qWebKitVersion())
+        return 'new QtWebKit (WebKit {})'.format(qWebKitVersion())
     elif objects.backend == usertypes.Backend.QtWebEngine:
         return str(qtwebengine_versions(
             avoid_init='avoid-chromium-init' in objects.debug_flags))
