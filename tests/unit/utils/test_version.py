@@ -1008,7 +1008,7 @@ class TestWebEngineVersions:
             if '.dev' in QtCore.PYQT_VERSION_STR:
                 pytest.skip("dev version of PyQt5")
 
-            if not QtWebEngine:
+            if not QtWebEngine or not hasattr(QtWebEngine, "PYQT_WEBENGINE_VERSION"):
                 # QtWebKit or QtWebEngine < 5.13
                 pytest.skip("QtWebEngine")
 
