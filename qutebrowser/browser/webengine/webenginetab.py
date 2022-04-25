@@ -119,7 +119,7 @@ class _WebEngineSearchWrapHandler:
         if not qtutils.version_check("5.14"):
             return
 
-        if not QtWebEngineCore.QWebEngineFindTextResult:
+        if not hasattr(QtWebEngineCore, 'QWebEngineFindTextResult'):
             # WORKAROUND for some odd PyQt/packaging bug where the
             # findTextResult signal is available, but QWebEngineFindTextResult
             # is not. Seems to happen on e.g. Gentoo.
