@@ -240,7 +240,7 @@ def check_libraries():
         import PyQt5
         pyqt_name = PyQt5.__name__
     except ImportError:
-        import PyQt6 # type: ignore[import, no-redef]
+        import PyQt6  # type: ignore[import]
         pyqt_name = PyQt6.__name__
 
     modules = {
